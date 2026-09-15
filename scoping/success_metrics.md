@@ -3,6 +3,7 @@
 | Category | Metric | Target |
 |---|---|---|
 | **Primary** | Reduction in average manual review time per invoice | ≥ 60% reduction vs. current ~15-20 min baseline, measured over the pilot's final 4 weeks |
+| **Primary** | Reduction in mismatch-driven payment error rate | ≥ 40% reduction vs. current baseline, measured over the pilot's final 4 weeks |
 | **Guardrail** | False-approval rate (invoice incorrectly auto-approved that should have been flagged) | 0% during pilot — any false approval halts auto-approval mode pending root-cause review |
 | **Quality** | Field extraction accuracy (invoice number, vendor, line items, total) against golden dataset | ≥ 98% field-level accuracy |
 | **Quality** | Match/mismatch verdict accuracy against golden dataset | ≥ 95% verdict accuracy |

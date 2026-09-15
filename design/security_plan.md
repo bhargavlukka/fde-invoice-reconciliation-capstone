@@ -18,6 +18,20 @@
 - PII/financial data (vendor banking details, pricing) is never logged in plaintext outside the audit log's
   access-controlled store.
 
+## LLM Input Handling
+- Invoice content is untrusted input: a supplier-supplied document could contain text crafted to look like an
+  instruction (a prompt-injection attempt) rather than data to extract fields from.
+- Mitigation: the extraction agent wraps the raw invoice text in explicit `<tool_output_data>` tags before it
+  reaches the model, and the system prompt instructs the model to treat anything inside those tags strictly as
+  data to extract from, never as instructions to follow, even if it contains text that looks like an
+  instruction (see `design/code_sample/extraction/agent.py`).
+- This is a lightweight, prompt-level defense, not a hard guarantee — a sufficiently adversarial document could
+  still attempt to manipulate model behavior, and structured-output validation (schema enforcement on the
+  extraction result) is the backstop, not this tagging alone.
+- Gap: the current code sample has no automated test case that exercises an injection attempt against the
+  extraction agent. Closing this is deferred to the evaluation plan's golden dataset, which already scopes
+  "adversarial/malformed documents" as a category to cover (see `design/evaluation_plan.md`).
+
 ## Encryption
 - All data in transit (to the SharedLLM gateway, to internal services) uses TLS.
 - Data at rest (audit log, PO/contract databases) is encrypted using the deployment environment's standard
