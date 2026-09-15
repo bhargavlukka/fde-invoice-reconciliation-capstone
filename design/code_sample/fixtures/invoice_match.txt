@@ -1,0 +1,9 @@
+Invoice Number: INV-9001
+Vendor: Acme Supplies
+PO Reference: PO-1001
+Line Items:
+- Widget A | Qty: 100 | Unit Price: 10.00 | Line Total: 1000.00
+- Widget B | Qty: 50 | Unit Price: 4.00 | Line Total: 200.00
+Subtotal: 1200.00
+Tax: 0.00
+Total: 1200.00

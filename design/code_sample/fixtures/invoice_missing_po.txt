@@ -1,0 +1,8 @@
+Invoice Number: INV-9003
+Vendor: Globex Materials
+PO Reference: PO-9999
+Line Items:
+- Steel Beams | Qty: 20 | Unit Price: 150.00 | Line Total: 3000.00
+Subtotal: 3000.00
+Tax: 0.00
+Total: 3000.00
