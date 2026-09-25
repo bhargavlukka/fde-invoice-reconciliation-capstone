@@ -24,3 +24,24 @@ If match accuracy or extraction accuracy drops unexpectedly:
 5. Notify compliance officer if any invoice was auto-approved during the affected window (should be zero per
    the guardrail metric, but the check is mandatory).
 6. Resume auto-processing only after the golden-dataset gate passes again.
+
+## Operational Ownership
+Once the pilot is handed over, the customer owns day-to-day operations. The FDE team acts as secondary
+on-call for 30 days, then moves to escalation-only support.
+
+| Area | Owner (after handover) | Backup | Responsibilities |
+|---|---|---|---|
+| Service uptime and deploys | IT/Security (platform team) | FDE engineer (first 30 days) | Container health, secrets rotation, applying pinned image/prompt releases, executing rollbacks |
+| Model/prompt quality | FDE engineer, moving to a named customer ML/automation owner by day 30 | FDE lead | Weekly golden-dataset re-run, approving prompt/model version changes, drift investigation |
+| Exception queue and approval SLA | Procurement/AP Lead | Senior AP clerk | Queue backlog, reviewer assignment, first escalation on SLA breach |
+| Audit log and controls | Compliance Officer | Internal audit | Periodic audit-log review, sign-off on any auto-approval threshold change, incident notification review (playbook step 5) |
+| PO/contract data freshness | Procurement/AP Lead | IT/Security | Keeping the PO and contract databases current; responding to data-drift incidents (playbook step 4) |
+| Business metrics and go/no-go | CFO | FDE lead | Monthly metrics review; decisions to expand scope or halt |
+
+**Alert routing:** golden-dataset regression → model/prompt quality owner. Queue backlog and SLA breach →
+Procurement/AP Lead. Gateway/API errors → IT/Security. Any possible false approval → Compliance Officer,
+always and immediately.
+
+**Handover criteria:** the FDE team steps back to escalation-only support once each owner above has handled
+at least one real alert or scheduled review on their own, and the Compliance Officer has signed off on the
+audit log.

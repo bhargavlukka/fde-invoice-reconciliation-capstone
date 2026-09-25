@@ -15,7 +15,8 @@ compliance officer (auditability), and procurement users (usability and trust). 
 - [`discovery/`](discovery/) — stakeholder map, current-state workflow, synthesized interview notes, problem statement and constraints.
 - [`scoping/`](scoping/) — Release 1 scope, SMART success metrics, risk assessment and exit criteria.
 - [`design/`](design/) — architecture, technology choices, security plan, evaluation plan, and a runnable code sample.
-- [`deployment_ops/`](deployment_ops/) — deployment plan and operations runbook.
+- [`deployment_ops/`](deployment_ops/) — deployment plan and operations runbook (including operational ownership).
+- [`demo/`](demo/) — final stakeholder demo script for the go/no-go review.
 - [`adoption/`](adoption/) — phased adoption strategy.
 - [`productization/`](productization/) — path from pilot to reusable product.
 
